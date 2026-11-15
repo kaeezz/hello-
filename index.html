@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello!</title>
+    <style>
+      body {
+        align-items: center;
+        background: #f4f6fb;
+        color: #202536;
+        display: flex;
+        font-family: system-ui, sans-serif;
+        justify-content: center;
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      main {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgb(32 37 54 / 10%);
+        max-width: 360px;
+        padding: 2rem;
+        text-align: center;
+        width: calc(100% - 4rem);
+      }
+
+      input,
+      button {
+        border: 1px solid #c8ccda;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font: inherit;
+        padding: 0.7rem;
+        width: 100%;
+      }
+
+      button {
+        background: #4459d9;
+        border: 0;
+        color: white;
+        cursor: pointer;
+        margin-top: 0.7rem;
+      }
+
+      #greeting {
+        min-height: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Say hello</h1>
+      <form id="name-form">
+        <label for="name">What is your name?</label>
+        <input id="name" name="name" autocomplete="name" required>
+        <button type="submit">Greet me</button>
+      </form>
+      <p id="greeting" aria-live="polite"></p>
+    </main>
+    <script>
+      const form = document.querySelector("#name-form");
+      const nameInput = document.querySelector("#name");
+      const greeting = document.querySelector("#greeting");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = nameInput.value.trim();
+        greeting.textContent = name ? `Hello, ${name}!` : "";
+      });
+    </script>
+  </body>
+</html>
